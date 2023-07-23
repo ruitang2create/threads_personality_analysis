@@ -66,3 +66,8 @@ streamlit run app.py
 - Make sure to respect Twitter's terms of service and API usage policies when using this application.
 
 
+
+
+```python
+PYTHONPATH=. python -m streamlit run app.py
+```
