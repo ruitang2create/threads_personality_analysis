@@ -17,11 +17,11 @@ This is a simple Streamlit web application that allows users to enter a Twitter 
 
 1. Clone this repository to your local machine using the following command:
 ```
-git clone https://github.com/your-github-username/twitter_analysis_app.git
+git clone https://github.com/ruitang2create/threads_personality_analysis.git
 ```
 2. Navigate to the project directory:
 ```
-cd twitter_analysis_app
+cd threads_personality_analysis
 ```
 3. (Optional) Create and activate a virtual environment (recommended) to isolate project dependencies:
 - On Windows:
