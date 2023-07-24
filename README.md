@@ -53,7 +53,7 @@ streamlit run app.py
 ## Example Usage
 
 1. Enter a Threads username in the input field.
-2. Click the "Test Personality" button to fetch the user's threads and perform the personality analysis.
+2. Click the "Analyze Threads" button to fetch the user's threads and perform the personality analysis.
 3. It will also show the results of the personality analysis, which can be customized based on your implementation in `utils/analysis.py`.
 
 ## Additional Notes
