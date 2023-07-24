@@ -1,17 +1,16 @@
-# Twitter User Information Analysis App
+# Threads User Personality Analysis App
 
-![Twitter User Information Analysis App](app_screenshot.png)
+![Threads User Personality Analysis App](app_screenshot.png)
 
 ## Overview
 
-This is a simple Streamlit web application that allows users to enter a Twitter username, fetch the user's information, and perform analysis on the user's tweets. The app provides insights into the user's profile, such as the number of followers and total tweets, and displays the results of the tweet analysis.
+This is a simple Streamlit web application that allows users to enter a Threads username, fetch the user's information, and perform analysis on the user's threads. The app provides insights into the user's threads content, and displays the results of the personality analysis.
 
 ## Requirements
 
 - Python 3.6 or later
 - Streamlit
-- Tweepy
-- (List any other dependencies your app may have here)
+- threads-net
 
 ## Setup Instructions
 
@@ -40,8 +39,6 @@ cd threads_personality_analysis
 pip install -r requirements.txt
 ```
 
-5. Set up your Twitter Developer credentials (API key, API secret key, Access token, and Access token secret) in `utils/twitter_api.py`. This will allow the app to fetch Twitter user information and tweets.
-
 ## How to Run
 
 1. After completing the setup instructions, run the Streamlit app using the following command:
@@ -55,15 +52,14 @@ streamlit run app.py
 
 ## Example Usage
 
-1. Enter a Twitter username in the input field.
-2. Click the "Analyze Tweets" button to fetch the user's information and perform the tweet analysis.
-3. The app will display the user's profile information, such as the number of followers and total tweets.
-4. It will also show the results of the tweet analysis, which can be customized based on your implementation in `data/analysis.py`.
+1. Enter a Threads username in the input field.
+2. Click the "Test Personality" button to fetch the user's threads and perform the personality analysis.
+3. It will also show the results of the personality analysis, which can be customized based on your implementation in `utils/analysis.py`.
 
 ## Additional Notes
 
-- You can customize the tweet analysis logic in `data/analysis.py` to perform different types of analysis on the user's tweets.
-- Make sure to respect Twitter's terms of service and API usage policies when using this application.
+- You can customize the threads analysis logic in `utils/analysis.py` to perform different types of analysis on the user's threads.
+- Make sure to respect Threads's terms of service and API usage policies when using this application.
 
 
 
