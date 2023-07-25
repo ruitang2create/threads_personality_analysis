@@ -4,6 +4,7 @@ import streamlit as st
 # from utils.twitter_api import get_user_tweets
 # from data.analysis import perform_tweet_analysis
 from data.parse_threads import fetch_user_threads, fetch_user_info
+from utils.analysis import analyze_personality_by_threads
 
 
 def main():
@@ -47,11 +48,9 @@ def main():
                         for threads in threads_list[:num_threads_to_analyze]
                     ]
                     analysis_result = analyze_personality_by_threads(threads_to_analyze)
-                    st.write(threads_to_analyze)
-                    
-                # analysis_result = perform_tweet_analysis(user_info['tweets'])
-                st.write("Analysis Result:")
-                # st.write(analysis_result)
+                    # st.write(threads_to_analyze)    
+                    st.write("Analysis Result:")
+                    st.write(analysis_result)
             else:
                 st.error(
                     "Error: Unable to fetch user information. Please check the Threads username."
