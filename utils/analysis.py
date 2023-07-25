@@ -32,7 +32,10 @@ llm = OpenAI(openai_api_key=OPEN_AI_API_KEY, model="text-davinci-002")
 
 def analyze_personality_by_threads(threads_list: list) -> str:
     stringified_threads = str(threads_list)
-    template = f"Analyze the personality of the author of the following social media posts: ```{stringified_threads}```\
-        Use 'You' as the subject in your response, as if the author is me."
+    template = f"Analyze the MBTI personality of the author of the following social media posts.\
+        Use 'You' as the subject in your response, as if the author is me.\
+        Posts: \
+            ```{stringified_threads}```\
+        "
     output = llm.predict(template)
     return output

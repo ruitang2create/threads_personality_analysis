@@ -13,7 +13,7 @@ def main():
     # User input for Twitter username
     threads_username = st.text_input("Enter Threads Username:")
     num_threads_to_analyze: int = st.selectbox(
-        "Number of latest threads to analyze:", (1, 5)
+        "Number of latest threads to analyze:", (5, 10, 20)
     )
 
     if st.button("Analyze Threads"):
