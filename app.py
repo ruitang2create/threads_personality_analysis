@@ -1,14 +1,20 @@
 # app.py
 import streamlit as st
+
 # from utils.twitter_api import get_user_tweets
 # from data.analysis import perform_tweet_analysis
 from data.parse_threads import fetch_user_threads, fetch_user_info
+from utils.analysis import analyze_personality_by_threads
+
 
 def main():
     st.title("Threads User Personality Analysis")
 
     # User input for Twitter username
     threads_username = st.text_input("Enter Threads Username:")
+    num_threads_to_analyze: int = st.selectbox(
+        "Number of latest threads to analyze:", (5, 10, 20)
+    )
 
     if st.button("Analyze Threads"):
         if threads_username:
@@ -22,17 +28,34 @@ def main():
                 follower_count = user_obj.get("follower_count")
                 st.write(f"User: {threads_username} (@{full_name})")
                 st.write(f"Followers: {follower_count}")
-                # st.write(f"Total Tweets: {user_info['statuses_count']}")
-                
+
                 st.write("Analyzing threads...")
                 user_threads = fetch_user_threads(threads_username)
-                threads_meta = user_threads.get("data").get("mediaData").get("threads")
-                st.json(user_threads)
-                # analysis_result = perform_tweet_analysis(user_info['tweets'])
-                st.write("Analysis Result:")
-                # st.write(analysis_result)
+                # st.json(user_threads)
+                threads_list: list = (
+                    user_threads.get("data").get("mediaData").get("threads")
+                )
+                if threads_list is not None and isinstance(threads_list, list):
+                    total_threads = len(threads_list)
+                    st.write(f"Total Threads: {len(threads_list)}")
+                    num_threads_to_analyze = min(num_threads_to_analyze, total_threads)
+                    # Analyze threads
+                    threads_to_analyze = [
+                        threads.get("thread_items")[0]
+                        .get("post")
+                        .get("caption")
+                        .get("text")
+                        for threads in threads_list[:num_threads_to_analyze]
+                    ]
+                    analysis_result = analyze_personality_by_threads(threads_to_analyze)
+                    # st.write(threads_to_analyze)    
+                    st.write("Analysis Result:")
+                    st.write(analysis_result)
             else:
-                st.error("Error: Unable to fetch user information. Please check the Threads username.")
+                st.error(
+                    "Error: Unable to fetch user information. Please check the Threads username."
+                )
+
 
 if __name__ == "__main__":
     main()
