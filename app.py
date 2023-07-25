@@ -18,8 +18,12 @@ def main():
 
     if st.button("Analyze Threads"):
         if threads_username:
+            try:
+                user_info = fetch_user_info(threads_username)
+            except Exception as e:
+                st.write(f"Failed to retrieve user info for {threads_username}")
+                return
             st.write(f"Fetching threads for @{threads_username}...")
-            user_info = fetch_user_info(threads_username)
             # st.json(user_info)
 
             if user_info is not None:
